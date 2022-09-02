@@ -16,8 +16,10 @@ class C64German:
 		return binaryString
 
 	def readFont(self):
+		counter = 0
 		for line in self.chunker(fontC64GermanRegular8, 8):
-			print(line)
+			counter += 1
+			print(str(counter) + ': '+ str(line))  # type: ignore
 			for byte in line:
 				charString = self.toCharField(byte)
 				print(charString)
