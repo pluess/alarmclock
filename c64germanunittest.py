@@ -42,6 +42,8 @@ class C64GermanUnitTest(unittest.TestCase):
 		self.assertEqual(actualCharacterDict['z'], [0, 0, 126, 12, 24, 48, 126, 0])  # type: ignore
 		self.assertEqual(actualCharacterDict['0'], [60, 102, 110, 118, 102, 102, 60, 0])  # type: ignore
 		self.assertEqual(actualCharacterDict['9'], [60, 102, 102, 62, 6, 102, 60, 0])  # type: ignore
+		self.assertEqual(actualCharacterDict['colon'], [0, 0, 24, 0, 0, 24, 0, 0])  # type: ignore
+		self.assertEqual(actualCharacterDict['heart'], [54, 127, 127, 127, 62, 28, 8, 0])  # type: ignore
 
 if __name__ == '__main__':  # type: ignore
 	unittest.main()
