@@ -24,6 +24,16 @@ class C64GermanUnitTest(unittest.TestCase):
 		a =  self.c64German.toCharField(0b11111111)  # type: ignore
 		self.assertEqual(a, 'XXXXXXXXXXXXXXXX')
 
+	def test_toBinaryString(self):
+		a =  self.c64German.toBinaryString(0b01010101)  # type: ignore
+		self.assertEqual(a, '01010101')
+		a =  self.c64German.toBinaryString(0b10101010)  # type: ignore
+		self.assertEqual(a, '10101010')
+		a =  self.c64German.toBinaryString(0b00000000)  # type: ignore
+		self.assertEqual(a, '00000000')
+		a =  self.c64German.toBinaryString(0b11111111)  # type: ignore
+		self.assertEqual(a, '11111111')
+
 	def test_getitem_int(self):
 		actualCharacter = self.c64German[129]
 		expectedCharacter = [231, 195, 153, 153, 129, 153, 153, 255]

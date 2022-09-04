@@ -1,5 +1,6 @@
 import unittest
 from coordinates import Cooridnates
+from coordinates import PositionOutOfRangeError
 
 """
 3x3
@@ -17,6 +18,21 @@ from coordinates import Cooridnates
       ----------
 """
 class CooridnatesUnitTest(unittest.TestCase):
+
+	def test_cartesianToPostion_OutOfRange(self):
+		coordinates = Cooridnates(9, 3)
+
+		try:
+			coordinates.cartesianToPostion(2,3)
+			self.fail('Should throw PositionOutOfRangeError.')
+		except PositionOutOfRangeError as e:
+			pass
+
+		try:
+			coordinates.cartesianToPostion(3,2)
+			self.fail('Should throw PositionOutOfRangeError.')
+		except PositionOutOfRangeError as e:
+			pass
 
 	def test_cartesianToPostion_Square_3_3(self):
 		coordinates = Cooridnates(9, 3)

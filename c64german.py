@@ -23,12 +23,13 @@ class C64German:
 	def __init__(self):
 		self.numericCharacterList = self.readFont(False)
 		self.symbolicCharacterDict = self.mapCharacters(self.numericCharacterList)  # type: ignore
+		self.numberOfBits = 8
 
 	def __getitem__(self, key) -> list:
 		if isinstance(key, int):
-			return self.numericCharacterList.get(key)
+			return self.numericCharacterList.get(key)  # type: ignore
 		else:
-			return self.symbolicCharacterDict.get(key)
+			return self.symbolicCharacterDict.get(key)  # type: ignore
 
 	def mapCharacters(self, characterList: dict)-> dict:
 		characterDict = {}
@@ -51,14 +52,18 @@ class C64German:
 	def chunker(self, seq: list, size: int):
 		return (seq[pos:pos + size] for pos in range(0, len(seq), size))  # type: ignore
 
-	def toCharField(self, byte: list) -> str:
-		binaryString = bin(byte)
-		binaryString = binaryString[2:]
-		l = len(binaryString)
-		for i in range(l, 8):  # type: ignore
-			binaryString = '0' + binaryString
+	def toCharField(self, byte: int) -> str:
+		binaryString = self.toBinaryString(byte)
 		binaryString = binaryString.replace('0', '..')
 		binaryString = binaryString.replace('1', 'XX')
+		return binaryString
+
+	def toBinaryString(self, byte: int) -> str:
+		binaryString = bin(byte)  # type: ignore
+		binaryString = binaryString[2:]
+		l = len(binaryString)
+		for i in range(l, self.numberOfBits):  # type: ignore
+			binaryString = '0' + binaryString
 		return binaryString
 
 	def readFont(self, output: bool) -> dict:
