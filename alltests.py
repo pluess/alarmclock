@@ -7,7 +7,7 @@ from numbers6x8unittest import Numbers6x8UnitTest
 
 suite = unittest.TestSuite()
 
-#suite.addTest(C64GermanUnitTest)
+suite.addTest(C64GermanUnitTest)
 suite.addTest(CooridnatesUnitTest)
 suite.addTest(FontUnitTest)
 suite.addTest(NeoDrawUnitTest)

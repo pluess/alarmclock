@@ -1,3 +1,9 @@
+try:
+	import gc
+except ImportError:
+    gc = None
+
+
 def chunker(seq: list, size: int):
 	return (seq[pos:pos + size] for pos in range(0, len(seq), size))  # type: ignore
 
@@ -45,9 +51,11 @@ class Font:
 		for character in chunker(bitMapList, self.height):
 			characterList[counter] = character  # type: ignore
 			counter += 1
-			if output: 
+			if output:
+				if gc is not None: gc.collect()
 				print(str(counter) + ': '+ str(character))  # type: ignore
 				for byte in character:
 					charString = self.toCharField(byte)
 					print(charString)
+		if gc is not None: gc.collect()
 		return characterList
