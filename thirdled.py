@@ -6,7 +6,7 @@ import time
  
 numpix = 256
 pixels = Neopixel(numpix, 0, 28, "GRB")
-coordinates = Cooridnates(numpix, 8)
+coordinates = Cooridnates(numpix, 8, True)
  
 yellow = (255, 100, 0)
 orange = (255, 50, 0)
@@ -17,7 +17,7 @@ red = (255, 0, 0)
 pixels.brightness(5)
 pixels.clear()
 
-neodraw = NeoDraw(pixels, coordinates, Numbers6x8())
+neodraw = NeoDraw(pixels, coordinates, Numbers6x8(), True)
 # neodraw.line(0,0,0,7, green)
 # neodraw.line(31,0,31,7, green)
 
