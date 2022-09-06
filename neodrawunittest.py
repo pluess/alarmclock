@@ -19,7 +19,7 @@ class NeopixelMock:
 		else:
 			self.drawnPixel[rgb_w] = [pixel_num]
 
-class FontMock(Font):
+class FontMock1(Font):
 
 	def __init__(self) -> None:
 		self.width = 4
@@ -29,6 +29,19 @@ class FontMock(Font):
 	def __getitem__(self, key) -> list:  # type: ignore
 		if (key=='A'):
 			return [0b1010,0b0101,0b1111,0b0000]
+		else:
+			raise NotImplementedError(key)
+
+class FontMock2(Font):
+
+	def __init__(self) -> None:
+		self.width = 4
+		self.height = 4
+		pass
+
+	def __getitem__(self, key) -> list:  # type: ignore
+		if (key=='A'):
+			return [0b0000,0b1111,0b1111,0b0000]
 		else:
 			raise NotImplementedError(key)
 
@@ -48,7 +61,7 @@ class NeoDrawUnitTest(unittest.TestCase):
 		numpix = 16
 		self.neopixel =  NeopixelMock(numpix, 0, 28, "GRB")
 		self.coordinates = Cooridnates(numpix, 4)
-		self.neodraw = NeoDraw(self.neopixel, self.coordinates, FontMock(), True)
+		self.neodraw = NeoDraw(self.neopixel, self.coordinates, FontMock1(), True)
 		self.red = (255,0,0)
 		self.black = (0,0,0)
 
@@ -76,6 +89,11 @@ class NeoDrawUnitTest(unittest.TestCase):
 		self.neodraw.letter(0, 0, 'A', self.red)
 		self.assertEqual(self.neopixel.drawnPixel[self.red], [14, 9, 6, 1, 10, 2, 12, 4])
 		self.assertEqual(self.neopixel.drawnPixel[self.black], [15, 8, 7, 0, 13, 5, 11, 3])
+
+	def test_letter_different_font(self):
+		self.neodraw.letter(0, 0, 'A', self.red, FontMock2())
+		self.assertEqual(self.neopixel.drawnPixel[self.red], [14, 9, 6, 1, 13, 10, 5, 2]	)
+		self.assertEqual(self.neopixel.drawnPixel[self.black], [15, 8, 7, 0, 12, 11, 4, 3])
 
 	def test_letter_shiftedWithClipping(self):
 		self.neodraw.letter(1, 1, 'A', (255, 0, 0))

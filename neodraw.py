@@ -26,13 +26,17 @@ class NeoDraw:
 			if self.isLogging: print('x={0}, y={0}'.format(x,y))
 			self.neopixel.set_pixel(self.coordiantes.cartesianToPostion(int(x), int(y)), rgb)
 
-	def letter(self, x : int, y : int, letter :str, rgb):
-		if (self.font==None):
+	def letter(self, x : int, y : int, letter :str, rgb, font: Font = None):  # type: ignore
+		if font==None:
+			localFont = self.font
+		else:
+			localFont = font
+		if localFont==None:
 			raise BaseException('font not defined')
-		topDownBitMapList = self.font[letter]
+		topDownBitMapList = localFont[letter]
 		bottomUpBitMapList = topDownBitMapList[::-1] # reverse
 		for bitMapRow in range(0, len(bottomUpBitMapList)):
-			binaryString = self.font.toBinaryString(bottomUpBitMapList[bitMapRow])
+			binaryString = localFont.toBinaryString(bottomUpBitMapList[bitMapRow])
 			for bitPosition in range(0, len(binaryString)):
 				if (binaryString[bitPosition]=='1'):
 					try:
