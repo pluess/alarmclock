@@ -39,3 +39,10 @@ class NeoDraw:
 						self.neopixel.set_pixel(self.coordiantes.cartesianToPostion(xPos, yPos), rgb)
 					except PositionOutOfRangeError:
 						pass
+				else:
+					try:
+						xPos = x + bitPosition
+						yPos = y + bitMapRow
+						self.neopixel.set_pixel(self.coordiantes.cartesianToPostion(xPos, yPos), (0,0,0))
+					except PositionOutOfRangeError:
+						pass

@@ -6,7 +6,7 @@ class PositionOutOfRangeError(Exception):
 		self.maxX = maxX
 		self.maxY = maxY
 
-		super(PositionOutOfRangeError, self).__init__('x: {}, y: {} not in Range of maxX: {}, maxY: {}'.format(self.x, self.y, self.maxX, self.maxY))
+		super(PositionOutOfRangeError, self).__init__('x: {}, y: {} not in Range of 0-maxX: {}, 0-maxY: {}'.format(self.x, self.y, self.maxX, self.maxY))
 
 class Cooridnates:
 
@@ -20,7 +20,7 @@ class Cooridnates:
 		self.maxY = self.matrixHeight - 1
 
 	def cartesianToPostion(self, x : int, y : int) -> int:
-		if (x>self.maxX or y>self.maxY):
+		if (x>self.maxX or y>self.maxY or x<0 or y<0):
 			raise PositionOutOfRangeError(x, y, self.maxX, self.maxY)
 		if (x % 2 == self.moduloRemainder):
 			return self.maxPosition - self.matrixHeight*x - y

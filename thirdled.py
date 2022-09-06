@@ -2,6 +2,7 @@ from pi_pico_neopixel.neopixel import Neopixel
 from neodraw import NeoDraw
 from coordinates import Cooridnates
 from c64german import C64German
+import time
  
 numpix = 256
 pixels = Neopixel(numpix, 0, 28, "GRB")
@@ -23,9 +24,20 @@ neodraw = NeoDraw(pixels, coordinates, C64German())
 # neodraw.line(1,1,1,6, blue)
 # neodraw.line(30,1,30,6, blue)
 
-neodraw.letter(0, 0, '1', green)
-neodraw.letter(7, 0, '2', green)
-neodraw.letter(15, 0, '3', green)
-neodraw.letter(23, 0, '4', green)
+i = -32
+
+while (True):
+	neodraw.letter(i, 0, '1', green)
+	neodraw.letter(i+8, 0, '2', green)
+	neodraw.letter(i+16, 0, '3', green)
+	neodraw.letter(i+24, 0, '4', green)
+	neodraw.letter(i+32, 0, '1', green)
+	neodraw.letter(i+40, 0, '2', green)
+	neodraw.letter(i+48, 0, '3', green)
+	neodraw.letter(i+56, 0, '4', green)
+	time.sleep(0.2)
+	i += 1
+	if i==0:
+		i=-32
 
 pixels.show()

@@ -1,38 +1,11 @@
 import unittest
 from c64german import C64German
+from c64german import mapCharacters
 
 class C64GermanUnitTest(unittest.TestCase):
 
 	def setUp(self):
-		self.c64German = C64German()
-
-	def test_chunker(self):
-		seq = [1,2,3,4,5,6,7,8,9,10]
-		expectedSeqSeq = [[1,2,3,4,5],[6,7,8,9,10]]
-
-		actualSeqSeq = self.c64German.chunker(seq, 5)
-		self.assertEqual(expectedSeqSeq[0], next(actualSeqSeq))  # type: ignore
-		self.assertEqual(expectedSeqSeq[1], next(actualSeqSeq))  # type: ignore
-
-	def test_toCharField(self):
-		a =  self.c64German.toCharField(0b01010101)  # type: ignore
-		self.assertEqual(a, '..XX..XX..XX..XX')
-		a =  self.c64German.toCharField(0b10101010)  # type: ignore
-		self.assertEqual(a, 'XX..XX..XX..XX..')
-		a =  self.c64German.toCharField(0b00000000)  # type: ignore
-		self.assertEqual(a, '................')
-		a =  self.c64German.toCharField(0b11111111)  # type: ignore
-		self.assertEqual(a, 'XXXXXXXXXXXXXXXX')
-
-	def test_toBinaryString(self):
-		a =  self.c64German.toBinaryString(0b01010101)  # type: ignore
-		self.assertEqual(a, '01010101')
-		a =  self.c64German.toBinaryString(0b10101010)  # type: ignore
-		self.assertEqual(a, '10101010')
-		a =  self.c64German.toBinaryString(0b00000000)  # type: ignore
-		self.assertEqual(a, '00000000')
-		a =  self.c64German.toBinaryString(0b11111111)  # type: ignore
-		self.assertEqual(a, '11111111')
+		self.c64German = C64German(True)
 
 	def test_getitem_int(self):
 		actualCharacter = self.c64German[129]
@@ -45,7 +18,7 @@ class C64GermanUnitTest(unittest.TestCase):
 		self.assertEqual(actualCharacter, expectedCharacter)
 
 	def test_mapCharacters(self):
-		actualCharacterDict = self.c64German.mapCharacters(self.c64German.numericCharacterList)
+		actualCharacterDict = mapCharacters(self.c64German.numericCharacterList)
 		self.assertEqual(actualCharacterDict['A'], [24, 60, 102, 102, 126, 102, 102, 0])  # type: ignore
 		self.assertEqual(actualCharacterDict['Z'], [126, 6, 12, 24, 48, 96, 126, 0])  # type: ignore
 		self.assertEqual(actualCharacterDict['a'], [0, 0, 60, 6, 62, 102, 62, 0])  # type: ignore

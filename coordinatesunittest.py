@@ -34,6 +34,18 @@ class CooridnatesUnitTest(unittest.TestCase):
 		except PositionOutOfRangeError as e:
 			pass
 
+		try:
+			coordinates.cartesianToPostion(-1,0)
+			self.fail('Should throw PositionOutOfRangeError.')
+		except PositionOutOfRangeError as e:
+			pass
+
+		try:
+			coordinates.cartesianToPostion(0,-1)
+			self.fail('Should throw PositionOutOfRangeError.')
+		except PositionOutOfRangeError as e:
+			pass
+
 	def test_cartesianToPostion_Square_3_3(self):
 		coordinates = Cooridnates(9, 3)
 		self.assertEqual(coordinates.cartesianToPostion(0, 0), 6)
