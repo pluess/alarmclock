@@ -44,9 +44,9 @@ class Font:
 		counter = 0
 		for character in chunker(bitMapList, self.height):
 			characterList[counter] = character  # type: ignore
+			counter += 1
 			if output: 
 				print(str(counter) + ': '+ str(character))  # type: ignore
-				counter += 1
 				for byte in character:
 					charString = self.toCharField(byte)
 					print(charString)

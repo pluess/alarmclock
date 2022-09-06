@@ -1,7 +1,7 @@
 from pi_pico_neopixel.neopixel import Neopixel
 from neodraw import NeoDraw
 from coordinates import Cooridnates
-from c64german import C64German
+from numbers6x8 import Numbers6x8
 import time
  
 numpix = 256
@@ -17,7 +17,7 @@ red = (255, 0, 0)
 pixels.brightness(5)
 pixels.clear()
 
-neodraw = NeoDraw(pixels, coordinates, C64German())
+neodraw = NeoDraw(pixels, coordinates, Numbers6x8())
 # neodraw.line(0,0,0,7, green)
 # neodraw.line(31,0,31,7, green)
 
