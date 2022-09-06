@@ -10,7 +10,7 @@ class PositionOutOfRangeError(Exception):
 
 class Cooridnates:
 
-	def __init__(self, numberOfLeds : int, matrixHeight : int) -> None:
+	def __init__(self, numberOfLeds : int, matrixHeight : int, isLogging : bool = False) -> None:
 		self.numberOfLeds = numberOfLeds
 		self.maxPosition = numberOfLeds - 1
 		self.matrixHeight = matrixHeight
@@ -18,11 +18,15 @@ class Cooridnates:
 		self.moduloRemainder = (numberOfLeds // matrixHeight) % 2
 		self.maxX = self.numberOfLeds // matrixHeight - 1
 		self.maxY = self.matrixHeight - 1
+		self.isLogging = isLogging
 
 	def cartesianToPostion(self, x : int, y : int) -> int:
 		if (x>self.maxX or y>self.maxY or x<0 or y<0):
+			if self.isLogging: print('position out of range')
 			raise PositionOutOfRangeError(x, y, self.maxX, self.maxY)
 		if (x % 2 == self.moduloRemainder):
-			return self.maxPosition - self.matrixHeight*x - y
+			position = self.maxPosition - self.matrixHeight*x - y
 		else:
-			return self.maxPosition - self.matrixHeight*x -self.yOffset + y
+			position = self.maxPosition - self.matrixHeight*x -self.yOffset + y
+		if self.isLogging: print('position={0}'.format(position))
+		return position

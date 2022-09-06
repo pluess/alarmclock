@@ -4,10 +4,11 @@ from font import Font
 
 class NeoDraw:
 
-	def __init__(self, neopixel, coordiantes : Cooridnates, font:Font = None) -> None:  # type: ignore
+	def __init__(self, neopixel, coordiantes : Cooridnates, font:Font = None, isLogging:bool = False) -> None:  # type: ignore
 		self.neopixel = neopixel
 		self.coordiantes = coordiantes
 		self.font = font
+		self.isLogging = isLogging
 
 	def line(self, x1 : int, y1 : int, x2 : int, y2 : int, rgb) -> None:
 		deltaX = x2-x1
@@ -22,6 +23,7 @@ class NeoDraw:
 		for i in range(0, delta):
 			x += stepX
 			y += stepY
+			if self.isLogging: print('x={0}, y={0}'.format(x,y))
 			self.neopixel.set_pixel(self.coordiantes.cartesianToPostion(int(x), int(y)), rgb)
 
 	def letter(self, x : int, y : int, letter :str, rgb):

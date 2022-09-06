@@ -48,7 +48,7 @@ class NeoDrawUnitTest(unittest.TestCase):
 		numpix = 16
 		self.neopixel =  NeopixelMock(numpix, 0, 28, "GRB")
 		self.coordinates = Cooridnates(numpix, 4)
-		self.neodraw = NeoDraw(self.neopixel, self.coordinates, FontMock())
+		self.neodraw = NeoDraw(self.neopixel, self.coordinates, FontMock(), True)
 		self.red = (255,0,0)
 		self.black = (0,0,0)
 
