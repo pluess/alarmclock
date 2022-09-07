@@ -18,26 +18,10 @@ pixels.brightness(5)
 pixels.clear()
 
 neodraw = NeoDraw(pixels, coordinates, Numbers6x8(), True)
-# neodraw.line(0,0,0,7, green)
-# neodraw.line(31,0,31,7, green)
 
-# neodraw.line(1,1,1,6, blue)
-# neodraw.line(30,1,30,6, blue)
-
-i = -32
-
-while (True):
-	neodraw.letter(i, 0, '1', green)
-	neodraw.letter(i+8, 0, '2', green)
-	neodraw.letter(i+16, 0, '3', green)
-	neodraw.letter(i+24, 0, '4', green)
-	neodraw.letter(i+32, 0, '1', green)
-	neodraw.letter(i+40, 0, '2', green)
-	neodraw.letter(i+48, 0, '3', green)
-	neodraw.letter(i+56, 0, '4', green)
-	time.sleep(0.2)
-	i += 1
-	if i==0:
-		i=-32
-
+neodraw.letter(0, 0, '1', green)
+neodraw.letter(6, 0, '2', green)
+neodraw.letter(12, 0, 'colon', green)
+neodraw.letter(18, 0, '3', green)
+neodraw.letter(24, 0, '4', green)
 pixels.show()
