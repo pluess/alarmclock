@@ -22,6 +22,7 @@ class Numbers6x8(Font):
 	Based on
 	fonts/numbers8x6.draw
 	https://github.com/pluess/monobit
+    https://github.com/robhagemans/hoard-of-bitfonts/blob/master/acorn/saa5050.draw
 	"""
 
 	def __init__(self, output : bool = False):

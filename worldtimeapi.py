@@ -1,13 +1,14 @@
 import json
+from logutil import get_logger
 
 url = 'https://worldtimeapi.org/api/timezone/'
 timeZoneZuerich = 'Europe/Zurich'
 
 class WorldTimeApi:
 
-    def __init__(self, httpgetter, isLogging : bool = False) -> None:
+    def __init__(self, httpgetter) -> None:
         self.httpgetter = httpgetter
-        self.isLogging = isLogging
+        self.logger = get_logger(__name__)
 
     def getInternetTime(self):
         """
@@ -23,13 +24,14 @@ class WorldTimeApi:
             try:
                 counter -= 1
                 jsonTime = self.httpgetter.get_body(self.httpgetter.http_get(url+timeZoneZuerich))
-                if self.isLogging is True: print(jsonTime)
+                self.logger.info(jsonTime)
                 currentTime = self._parseDateTime(jsonTime)
                 return currentTime
             except ValueError as e:
                 if counter > 0:
                     pass
                 else:
+                    self.logger.exception("Max retry count reached.")
                     raise e
                     
 
