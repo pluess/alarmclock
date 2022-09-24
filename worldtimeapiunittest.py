@@ -7,7 +7,7 @@ class HttpGetterMock:
 
     def __init__(self, failedReds : int = 0) -> None:
         self.failedReds = failedReds
-        with open('response.log','rb') as rf:
+        with open('test_response.txt','rb') as rf:
             self.mockResponse = rf.read()
             self.mockResponse = self.mockResponse.decode('utf-8')
 
@@ -35,13 +35,13 @@ class WorldTimeApiUnitTest(unittest.TestCase):
     def test_getInternetTime(self):
         worldTimeApi = WorldTimeApi(HttpGetterMock())
         actualDateTime = worldTimeApi.getInternetTime()
-        expectedDateTime = (2022, 9, 8, 4, 11, 15, 59, 0)
+        expectedDateTime = (2022, 9, 24, 6, 20, 59, 10, 0)
         self.assertEqual(actualDateTime, expectedDateTime)
 
     def test_getInternetTime_two_fails(self):
         worldTimeApi = WorldTimeApi(HttpGetterMock(2))
         actualDateTime = worldTimeApi.getInternetTime()
-        expectedDateTime = (2022, 9, 8, 4, 11, 15, 59, 0)
+        expectedDateTime = (2022, 9, 24, 6, 20, 59, 10, 0)
         self.assertEqual(actualDateTime, expectedDateTime)
 
     def test_getInternetTime_complete_fail(self):
