@@ -34,10 +34,12 @@ class NeoDraw:
             localFont = font
         if localFont==None:
             raise BaseException('font not defined')
+        self.logger.info('showing letter '+letter)
         topDownBitMapList = localFont[letter]
         bottomUpBitMapList = topDownBitMapList[::-1] # reverse
         for bitMapRow in range(0, len(bottomUpBitMapList)):
             binaryString = localFont.toBinaryString(bottomUpBitMapList[bitMapRow])
+            self.logger.info('{}: {}'.format(bitMapRow, binaryString))
             for bitPosition in range(0, len(binaryString)):
                 if (binaryString[bitPosition]=='1'):
                     try:
