@@ -42,5 +42,5 @@ class C64German(Font):
 	def __init__(self):
 		super(C64German, self).__init__(fontC64GermanRegular8, 8, 8, mapCharacters)
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # type: ignore
 	font = C64German()

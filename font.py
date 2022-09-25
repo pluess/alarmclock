@@ -3,8 +3,8 @@ try:
 except ImportError:
     gc = None
 
-import logging
 from logutil import get_logger
+import logging
 
 
 def chunker(seq: list, size: int):

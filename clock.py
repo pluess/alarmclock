@@ -1,3 +1,5 @@
+import application
+
 from machine import RTC
 from machine import Timer
 import time
@@ -13,7 +15,6 @@ from numbers6x8 import Numbers6x8
 import httpgetter
 from logutil import get_logger
 import webrepl
-
 
 def setRTC():
     """

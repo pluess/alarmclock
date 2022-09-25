@@ -1,3 +1,5 @@
+import application 
+
 import unittest
 from c64germanunittest import C64GermanUnitTest
 from coordinatesunittest import CooridnatesUnitTest

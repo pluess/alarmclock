@@ -5,8 +5,16 @@ url = 'https://worldtimeapi.org/api/timezone/'
 timeZoneZuerich = 'Europe/Zurich'
 
 class WorldTimeApi:
+    """
+    Gets the current time from the the internet.
+    """
 
     def __init__(self, httpgetter) -> None:
+        """_summary_
+
+        Args:
+            httpgetter (ModuleType): The httpgetter.py module or a mock for testing.
+        """
         self.httpgetter = httpgetter
         self.logger = get_logger(__name__)
 

@@ -1,3 +1,5 @@
+import application 
+
 import unittest
 from coordinates import Cooridnates
 from coordinates import PositionOutOfRangeError

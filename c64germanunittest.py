@@ -1,3 +1,5 @@
+import application 
+
 import unittest
 from c64german import C64German
 from c64german import mapCharacters

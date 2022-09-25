@@ -1,3 +1,5 @@
+import application 
+
 import unittest
 from numbers6x8 import Numbers6x8
 from numbers6x8 import mapCharacters
