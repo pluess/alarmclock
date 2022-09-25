@@ -30,9 +30,9 @@ Disclaimer: Affiliate Links
 
 # References
 
-https://github.com/blaz-r/pi_pico_neopixel
-https://github.com/robhagemans/hoard-of-bitfonts
-https://github.com/robhagemans/monobit
-https://github.com/pfalcon/pycopy-lib/tree/master/logging
-https://www.pluess.li/2022/09/22/logging-mit-micropython/
-https://www.pluess.li/2022/09/17/webrepl-fuer-den-raspberry-pi-pico-w/
+* https://github.com/blaz-r/pi_pico_neopixel
+* https://github.com/robhagemans/hoard-of-bitfonts
+* https://github.com/robhagemans/monobit
+* https://github.com/pfalcon/pycopy-lib/tree/master/logging
+* https://www.pluess.li/2022/09/22/logging-mit-micropython/
+* https://www.pluess.li/2022/09/17/webrepl-fuer-den-raspberry-pi-pico-w/
