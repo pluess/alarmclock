@@ -16,15 +16,15 @@ import httpgetter
 from logutil import get_logger
 import webrepl
 
+logger = get_logger(__name__)
+
 def setRTC():
     """
     Set RTC with current time from https://worldtimeapi.org/api/timezone/Europe/Zurich
     """
     worldTimeApi = WorldTimeApi(httpgetter)
     RTC().datetime(worldTimeApi.getInternetTime())
-    print(RTC().datetime())
-
-logger = get_logger(__name__)
+    logger.info(', '.join(str(x) for x in RTC().datetime()))
 
 try:
     # connect to WLAN
@@ -53,6 +53,6 @@ try:
     
 except Exception as e:
     # just in case, log every exception
-    logger.exception('Error in clock.')
+    logger.exc(e, 'Error in clock.')  # type: ignore
     raise e
 

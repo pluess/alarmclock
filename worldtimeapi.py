@@ -39,7 +39,7 @@ class WorldTimeApi:
                 if counter > 0:
                     pass
                 else:
-                    self.logger.exception("Max retry count reached.")
+                    self.logger.exc(e, "Max retry count reached.")  # type: ignore
                     raise e
                     
 
