@@ -44,7 +44,7 @@ try:
 
     neodraw = NeoDraw(neopixels, coordinates, Numbers6x8())
 
-    display = Display(time, neodraw, True)
+    display = Display(time, neodraw)
     display.showTime()
 
 

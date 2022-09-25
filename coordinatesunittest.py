@@ -20,7 +20,7 @@ from coordinates import PositionOutOfRangeError
 class CooridnatesUnitTest(unittest.TestCase):
 
 	def test_cartesianToPostion_OutOfRange(self):
-		coordinates = Cooridnates(9, 3, True)
+		coordinates = Cooridnates(9, 3)
 
 		try:
 			coordinates.cartesianToPostion(2,3)
@@ -47,7 +47,7 @@ class CooridnatesUnitTest(unittest.TestCase):
 			pass
 
 	def test_cartesianToPostion_Square_3_3(self):
-		coordinates = Cooridnates(9, 3, True)
+		coordinates = Cooridnates(9, 3)
 		self.assertEqual(coordinates.cartesianToPostion(0, 0), 6)
 		self.assertEqual(coordinates.cartesianToPostion(1, 0), 5)
 		self.assertEqual(coordinates.cartesianToPostion(2, 0), 0)
@@ -61,7 +61,7 @@ class CooridnatesUnitTest(unittest.TestCase):
 		self.assertEqual(coordinates.cartesianToPostion(2, 2), 2)
 
 	def test_cartesianToPostion_Square_4_3(self):
-		coordinates = Cooridnates(12, 3, True)
+		coordinates = Cooridnates(12, 3)
 		self.assertEqual(coordinates.cartesianToPostion(0, 0),11)
 		self.assertEqual(coordinates.cartesianToPostion(1, 0), 6)
 		self.assertEqual(coordinates.cartesianToPostion(2, 0), 5)
@@ -78,7 +78,7 @@ class CooridnatesUnitTest(unittest.TestCase):
 		self.assertEqual(coordinates.cartesianToPostion(3, 2), 2)
 
 	def test_cartesianToPostion_BigMatrix(self):
-		coordinates = Cooridnates(256, 8, True)
+		coordinates = Cooridnates(256, 8)
 		self.assertEqual(coordinates.cartesianToPostion(31, 0), 0)
 		self.assertEqual(coordinates.cartesianToPostion(31, 1), 1)
 		self.assertEqual(coordinates.cartesianToPostion(31, 2), 2)

@@ -5,7 +5,7 @@ from c64german import mapCharacters
 class C64GermanUnitTest(unittest.TestCase):
 
 	def setUp(self):
-		self.c64German = C64German(True)
+		self.c64German = C64German()
 
 	def test_getitem_int(self):
 		actualCharacter = self.c64German[129]

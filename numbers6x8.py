@@ -25,8 +25,8 @@ class Numbers6x8(Font):
     https://github.com/robhagemans/hoard-of-bitfonts/blob/master/acorn/saa5050.draw
 	"""
 
-	def __init__(self, output : bool = False):
-		super(Numbers6x8, self).__init__(font_numbers6x8_Regular_8, 6, 8, mapCharacters, output) # type: ignore
+	def __init__(self):
+		super(Numbers6x8, self).__init__(font_numbers6x8_Regular_8, 6, 8, mapCharacters)
 
-if __name__ == '__main__':  # type: ignore
-	font = Numbers6x8(True)
+if __name__ == '__main__':
+	font = Numbers6x8()

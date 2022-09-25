@@ -5,7 +5,7 @@ from numbers6x8 import mapCharacters
 class Numbers6x8UnitTest(unittest.TestCase):
 
 	def setUp(self):
-		self.numbers6x8 = Numbers6x8(True)
+		self.numbers6x8 = Numbers6x8()
 
 	def test_getitem_int(self):
 		actualCharacter = self.numbers6x8[5]

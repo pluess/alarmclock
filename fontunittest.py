@@ -18,7 +18,7 @@ def mapCharacters(characterList: dict)-> dict:
 class FontUnitTest(unittest.TestCase):
 
 	def setUp(self):
-		self.font = Font(font_numbers8x6, 6, 8, mapCharacters, True)  # type: ignore
+		self.font = Font(font_numbers8x6, 6, 8, mapCharacters)
 
 	def test_chunker(self):
 		seq = [1,2,3,4,5,6,7,8,9,10]
