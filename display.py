@@ -1,8 +1,9 @@
 from neodraw import NeoDraw
+from logutil import get_logger
 
 class Display:
 
-    def __init__(self, time, neodraw : NeoDraw, isLogging : bool = False) -> None:
+    def __init__(self, time, neodraw : NeoDraw) -> None:
         
         yellow = (255, 100, 0)
         orange = (255, 50, 0)
@@ -13,7 +14,7 @@ class Display:
         
         self.neodraw = neodraw
         self.time = time
-        self.isLogging = isLogging
+        self.logger = get_logger(__name__)
 
     def getTimeStrings(self):
         currentTime = self.time.localtime()
@@ -25,7 +26,7 @@ class Display:
 
     def showTime(self):
         hours, minutes = self.getTimeStrings()
-        if self.isLogging is True: print('{}:{}'.format(hours, minutes))
+        self.logger.info('{}:{}'.format(hours, minutes))
         self.neodraw.clear()
         self.neodraw.letter(0,0,hours[0], self.color)
         self.neodraw.letter(6,0,hours[1], self.color)
