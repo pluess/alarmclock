@@ -16,15 +16,19 @@ import webrepl
 
 
 def setRTC():
+    """
+    Set RTC with current time from https://worldtimeapi.org/api/timezone/Europe/Zurich
+    """
     worldTimeApi = WorldTimeApi(httpgetter)
     RTC().datetime(worldTimeApi.getInternetTime())
     print(RTC().datetime())
 
 logger = get_logger(__name__)
 
-
 try:
+    # connect to WLAN
     WlanConnector(network).connect(secrets.ssid, secrets.password)  # type: ignore
+    # allow access via webrepl
     webrepl.start()
 
     setRTC()
@@ -32,12 +36,6 @@ try:
     numpix = 256
     neopixels = Neopixel(numpix, 0, 28, "GRB")
     coordinates = Cooridnates(numpix, 8)
-    
-    yellow = (255, 100, 0)
-    orange = (255, 50, 0)
-    green = (0, 255, 0)
-    blue = (0, 0, 255)
-    red = (255, 0, 0)
     
     neopixels.brightness(5)
     neopixels.clear()
@@ -47,9 +45,13 @@ try:
     display = Display(time, neodraw)
     display.showTime()
 
-
+    # update time very minute
     t1 = Timer(period=60000, mode=Timer.PERIODIC, callback=lambda t:display.showTime())
+    # get current time every 15 minutes
     t2 = Timer(period=15*60000, mode=Timer.PERIODIC, callback=lambda t:setRTC())
+    
 except Exception as e:
+    # just in case, log every exception
     logger.exception('Error in clock.')
+    raise e
 
