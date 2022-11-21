@@ -38,7 +38,7 @@ try:
     neopixels = Neopixel(numpix, 0, 28, "GRB")
     coordinates = Cooridnates(numpix, 8)
     
-    neopixels.brightness(5)
+    neopixels.brightness(50)
     neopixels.clear()
 
     neodraw = NeoDraw(neopixels, coordinates, Numbers6x8())

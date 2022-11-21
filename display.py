@@ -10,7 +10,7 @@ class Display:
         green = (0, 255, 0)
         blue = (0, 0, 255)
         red = (255, 0, 0)
-        self.color = blue
+        self.color = orange
         
         self.neodraw = neodraw
         self.time = time
