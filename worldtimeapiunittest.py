@@ -8,7 +8,7 @@ class HttpGetterMock:
 
     def __init__(self, failedReds : int = 0) -> None:
         self.failedReds = failedReds
-        with open('test_response.txt','rb') as rf:
+        with open('etc/test_response.txt','rb') as rf:
             self.mockResponse = rf.read()
             self.mockResponse = self.mockResponse.decode('utf-8')
 

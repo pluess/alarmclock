@@ -1,6 +1,7 @@
 import application 
 
 import unittest
+from brightnessunittest import BrightnessUnitTest
 from c64germanunittest import C64GermanUnitTest
 from coordinatesunittest import CooridnatesUnitTest
 from fontunittest import FontUnitTest
@@ -18,6 +19,7 @@ suite.addTest(NeoDrawUnitTest)  # type: ignore
 suite.addTest(Numbers6x8UnitTest)  # type: ignore
 suite.addTest(WlanConnectorUnitTest)  # type: ignore
 suite.addTest(WorldTimeApiUnitTest)  # type: ignore
+suite.addTest(BrightnessUnitTest)   # type: ignore
 
 runner = unittest.TestRunner()  # type: ignore
 runner.run(suite)
